@@ -1,0 +1,29 @@
+app:
+  domain: http://localhost:8080
+
+springdoc:
+  swagger-ui:
+    enabled: true #local환경에서는 swagger-ui.html 노출이 가능
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/miribojob
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+jwt:
+  issuer: miribojob-local
+  secret: ${JWT_SECRET_KEY:a2lsZGFyZVByb2plY3RHYXppSnd0U2VjcmV0TG9jYWw=} # 32자 이상의 키값 필요
+  expire:
+    minute : ${ACCESSTOKEN_EXPIRE_MINUTE:180}
+    day : ${REFRESHTOKEN_EXPIRE_DAY:7}
+
+external-service:
+  korea-emd:
+    issueer: vworld
+    baseurl: https://api.vworld.kr/req/data
+    key: 31CF64FC-14B9-3BC4-BE58-E44A09D8A425
