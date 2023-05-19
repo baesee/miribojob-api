@@ -29,7 +29,7 @@ public class CsvFileReaderService<T> {
 
         while ((line = br.readLine()) != null) {
             try {
-                resultList.add((T) parse(line));
+                resultList.add((T) koreaCompanyInfoParse(line));
             } catch (Exception e) {
                 log.error("파싱 중 문제가 생겨 이 라인은 넘어갑니다. 회사명 ['" + line.split(",")[1].toString() + "']");
             }
@@ -38,7 +38,7 @@ public class CsvFileReaderService<T> {
         return resultList;
     }
 
-    private KoreaCompanyInfo parse(String line){
+    private KoreaCompanyInfo koreaCompanyInfoParse(String line){
         String splitLine[] = line.split(",");
         return KoreaCompanyInfo.builder()
                 .companyName(splitLine[1])
@@ -57,7 +57,7 @@ public class CsvFileReaderService<T> {
     }
 
     @Transactional
-    public void saveTest(String filename){
+    public void setCompanyInfoSave(String filename){
         try {
             List<KoreaCompanyInfo> resultList = (List<KoreaCompanyInfo>) fileReadByLine(filename);
             resultList
