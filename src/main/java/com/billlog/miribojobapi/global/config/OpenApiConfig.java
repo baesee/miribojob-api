@@ -46,18 +46,10 @@ public class OpenApiConfig {
 
     // 그룹핑
     @Bean
-    public GroupedOpenApi memberGroup() {
-        return GroupedOpenApi.builder()
-                .group("1. 인증 API")
-                .pathsToMatch("/miribojob/api/v*/member/**")
-                .build();
-    }
-
-    @Bean
     public GroupedOpenApi mypageGroup() {
         return GroupedOpenApi.builder()
-                .group("2. 마이페이지 API")
-                .pathsToMatch("/miribojob/api/v*/mypage/**")
+                .group("1. 미리보잡 통합 API")
+                .pathsToMatch("/miribojob/api/v*/**")
                 .build();
     }
 }

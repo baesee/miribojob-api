@@ -54,7 +54,7 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)         // JWT인증사용하므로 세션 사용  함
                 .and()
                 .authorizeRequests()                                                                // 다음  요청 리퀘스트에 대한 사용권한 체크
-                .antMatchers("/miribojob/api/v*/mypage/**").hasAnyRole("USER")       // 로긴사용자 이상의 권한만 접근 가능
+                //.antMatchers("/miribojob/api/v*/mypage/**").hasAnyRole("USER")       // 로긴사용자 이상의 권한만 접근 가능
                 .anyRequest().permitAll()                                                           // 위 필터링 그 외 나머지 요청은 누구나 접근 가능
                 .and()
                 .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint()) // 401 Cusotom Error
