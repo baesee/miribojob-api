@@ -1,17 +1,21 @@
 package com.billlog.miribojobapi.common.public_data.company.domain;
 
 import com.billlog.miribojobapi.global.common.BaseTimeEntity;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
+@Table(indexes = {
+        @Index(name="idx_koreaCompanyInfo_companyName", columnList = "companyName"),
+        @Index(name="idx_koreaCompanyInfo_sidoCode_companyName", columnList = "sidoCode, companyName"),
+        @Index(name="idx_koreaCompanyInfo_businessCategoryCode_companyName", columnList = "businessCategoryCode, companyName")
+})
 public class KoreaCompanyInfo extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

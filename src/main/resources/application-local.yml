@@ -1,5 +1,5 @@
 app:
-  domain: http://localhost:8080
+  domain: http://localhost:9090
 
 springdoc:
   swagger-ui:
@@ -13,7 +13,7 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 jwt:
   issuer: miribojob-local

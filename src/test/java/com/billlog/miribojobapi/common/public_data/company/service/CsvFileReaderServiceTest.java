@@ -4,9 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("local")
@@ -19,9 +18,10 @@ class CsvFileReaderServiceTest {
 
     @DisplayName("CSV Reader Test")
     @Test
+    @Rollback(false) // rollback 되지 않도록 설정
     public void csvReadeTest() throws Exception{
         // given
-        csvFileReaderService.saveTest("/Users/baesee/billlog-project/preview-job/testcsv.csv");
+        csvFileReaderService.setCompanyInfoSave("/Users/baesee/billlog-project/preview-job/testcsv.csv");
         // when
 
         // then
